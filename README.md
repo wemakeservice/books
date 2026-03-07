@@ -1,0 +1,46 @@
+# Ridibooks Auto Capture Script 📸
+
+This is a Python script that automatically captures pages of the Ridibooks PC/Mac viewer and saves them as images using Python.
+
+## Prerequisites
+
+- Python 3.8+
+- The `Ridibooks` viewer installed on your OS.
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone <your-github-repo-url>
+   cd ridibooks-auto-capture
+   ```
+
+2. Create a virtual environment and install dependencies:
+   ```bash
+   # Windows
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   pip install -r requirements.txt
+
+   # Mac/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+1. Open the Ridibooks application and ensure the book you want to capture is open.
+2. Run the script:
+   ```bash
+   python capture_ridibooks.py
+   ```
+3. The script will automatically find the active Ridibooks window, capture the screen, save it to the `screenshots/` directory, and press the `Right Arrow` key to proceed to the next page.
+4. To forcefully stop the script, press `Ctrl+C` in your terminal.
+
+## Note on Mac Support
+- For Mac OS, `pygetwindow` may not flawlessly discover active windows right away compared to Windows. You may need to grant **Accessibility Permissions** to your Terminal (or IDE) and Python executable in `System Preferences -> Security & Privacy -> Privacy -> Accessibility` to allow `pyautogui` to send keystrokes and `ImageGrab` to capture the screen layout.
+- Mac window titles may appear differently. Adjust the window search keyword inside `capture_ridibooks.py` if needed.
+
+## Disclaimer
+Note: Ridibooks employs DRM restrictions on their PC viewer (e.g., `SetWindowDisplayAffinity`) that may render screenshots black or transparent. This script handles the window automation but does not natively bypass OS-level DRM restrictions. Using an Android App Player (like BlueStacks or LDPlayer) as the target window is the most common workaround.
