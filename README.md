@@ -39,8 +39,9 @@ This is a Python script that automatically captures pages of the Ridibooks PC/Ma
 4. To forcefully stop the script, press `Ctrl+C` in your terminal.
 
 ## Note on Mac Support
-- For Mac OS, `pygetwindow` may not flawlessly discover active windows right away compared to Windows. You may need to grant **Accessibility Permissions** to your Terminal (or IDE) and Python executable in `System Preferences -> Security & Privacy -> Privacy -> Accessibility` to allow `pyautogui` to send keystrokes and `ImageGrab` to capture the screen layout.
-- Mac window titles may appear differently. Adjust the window search keyword inside `capture_ridibooks.py` if needed.
+- **Window Detection**: On macOS, the script uses AppleScript (`osascript`) to find and activate the Ridibooks window natively, avoiding issues with `pygetwindow`.
+- **Permissions**: You MUST grant **Accessibility Permissions** and **Screen Recording Permissions** to your Terminal (or IDE) and Python executable in `System Preferences -> Security & Privacy -> Privacy`. This allows `pyautogui` to send the right-arrow keystrokes and `ImageGrab` to capture the screen layout.
+- **Retina Displays**: If you are using a Mac with a Retina display, the bounding box coordinate scaling might differ slightly depending on your Pillow version. Ensure your `Pillow` library is updated (`pip install --upgrade Pillow`).
 
 ## Disclaimer
 Note: Ridibooks employs DRM restrictions on their PC viewer (e.g., `SetWindowDisplayAffinity`) that may render screenshots black or transparent. This script handles the window automation but does not natively bypass OS-level DRM restrictions. Using an Android App Player (like BlueStacks or LDPlayer) as the target window is the most common workaround.
