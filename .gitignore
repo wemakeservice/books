@@ -17,3 +17,4 @@ env/
 
 # Project specific
 screenshots/
+.DS_Store
